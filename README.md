@@ -6,6 +6,8 @@ Local models should not inherit unrestricted access to your computer. LocalTrust
 
 This is a working portfolio prototype, not a hardened OS sandbox. The default demo needs neither a GPU nor model weights, credentials, or paid services.
 
+![Synthetic browser demo after an approved read](docs/demo.png)
+
 ## Try it
 
 ```sh
@@ -81,6 +83,8 @@ cargo test --all-targets
 cargo clippy --all-targets -- -D warnings
 cargo build --manifest-path src-tauri/Cargo.toml
 ```
+
+Optional UI check: with the demo running, install Playwright (`npm install --no-save playwright`), run `npx playwright install chromium`, then `node scripts/check-browser.mjs`. Set `CHROMIUM_EXECUTABLE` only when using an existing compatible browser. The script tests deny/create/read/traversal and mobile overflow, and refreshes the synthetic screenshot.
 
 CI runs Rust/C++ tests and lint on Linux and Windows, browser adapter tests on both, and a Linux desktop build. See [Actions](https://github.com/dileepreddy27/localtrust-desktop/actions) for authoritative results. Tests cover approval/no early write, denial, replay, expiry, path traversal, reserved names, overwrite races, size limits, strict model schema, GGUF prefix validation, and Unix symlink denial. See [verification notes](docs/VERIFICATION.md) for observed evidence and remaining checks.
 
