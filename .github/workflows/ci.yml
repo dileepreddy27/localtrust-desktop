@@ -26,3 +26,10 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
       - run: cargo build --manifest-path src-tauri/Cargo.toml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rust-lockfiles
+          path: |
+            Cargo.lock
+            src-tauri/Cargo.lock
