@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "LocalTrust Desktop",
+  "version": "0.1.0",
+  "identifier": "dev.localtrust.desktop",
+  "build": { "frontendDist": "../ui" },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [{ "title": "LocalTrust Desktop", "width": 1180, "height": 820 }],
+    "security": { "csp": "default-src 'self'; script-src 'self'; style-src 'self'; connect-src ipc: http://ipc.localhost; img-src 'self' data:" }
+  },
+  "bundle": { "active": false }
+}
